@@ -9,7 +9,8 @@ import { QuestionsComponent } from './questions/questions.component';
 import { FooterComponent } from './footer/footer.component';
 import { QuestionListComponent } from './questions/question-list/question-list.component';
 import { QuestionItemComponent } from './questions/question-list/question-item.component';
-import { AnswerItemComponent } from './questions/question-list/answer-item.component';
+import { QuestionAreaComponent } from './questions/question-area/question-area.component';
+import { AnswerAreaComponent } from './questions/answer-area/answer-area.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { AnswerItemComponent } from './questions/question-list/answer-item.compo
     FooterComponent,
     QuestionListComponent,
     QuestionItemComponent,
-    AnswerItemComponent
+    QuestionAreaComponent,
+    AnswerAreaComponent
   ],
   imports: [
     BrowserModule,
