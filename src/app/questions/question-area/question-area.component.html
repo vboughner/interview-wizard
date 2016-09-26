@@ -1,26 +1,20 @@
 <div class="row">
   <div class="col-sm-12" style="background-color: darkorchid">
-    <h3>Question title in bold</h3>
+    <h3>{{selectedQuestion?.name}}</h3>
   </div>
 </div>
 <div class="row">
-  <div class="col-sm-8" style="background-color: darkgoldenrod">
-    <p>question description text</p>
-    <p>question description text</p>
-    <p>question description text</p>
-    <p>question description text</p>
-    <p>question description text</p>
-  </div>
-  <div class="col-sm-4" style="background-color: darkolivegreen">
-    <p>question image</p>
-    <p>question image</p>
-    <p>question image</p>
-    <p>question image</p>
+  <div class="col-sm-12" style="background-color: darkgoldenrod">
+    <p class="pull-left">{{selectedQuestion?.description}}</p>
+    <span class="pull-right">
+      <img class="img-responsive"
+           src="{{selectedQuestion?.imagePath}}"
+           style="max-height: 200px;"/>
+    </span>
   </div>
 </div>
 <div class="row">
-  <div class="col-sm-12" style="background-color: darkred">
-    <p>question link</p>
+  <div class="col-sm-12" style="background-color: yellowgreen">
     <p>question link</p>
   </div>
 </div>

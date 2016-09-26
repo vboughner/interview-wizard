@@ -1,4 +1,4 @@
-import {Component, OnInit, Input} from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 import { Question } from '../question';
 
@@ -8,8 +8,7 @@ import { Question } from '../question';
   styles: []
 })
 export class QuestionItemComponent implements OnInit {
-  // @Input question: Question;
-  question = new Question('Dummy', 'Dummy Description', 'http://assets.uvamagazine.org/images/uploads/2009/01-Spring/Research/Dummy.jpg');
+  @Input() question: Question;
   questionId: number;
 
   constructor() { }
