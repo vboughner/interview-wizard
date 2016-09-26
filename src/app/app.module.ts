@@ -7,13 +7,19 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { QuestionsComponent } from './questions/questions.component';
 import { FooterComponent } from './footer/footer.component';
+import { QuestionListComponent } from './questions/question-list/question-list.component';
+import { QuestionItemComponent } from './questions/question-list/question-item.component';
+import { AnswerItemComponent } from './questions/question-list/answer-item.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     QuestionsComponent,
-    FooterComponent
+    FooterComponent,
+    QuestionListComponent,
+    QuestionItemComponent,
+    AnswerItemComponent
   ],
   imports: [
     BrowserModule,
