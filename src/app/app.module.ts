@@ -12,6 +12,7 @@ import { QuestionItemComponent } from './questions/question-list/question-item.c
 import { QuestionAreaComponent } from './questions/question-area/question-area.component';
 import { AnswerAreaComponent } from './questions/answer-area/answer-area.component';
 import { DropdownDirective } from './dropdown.directive';
+import { QuestionService } from './questions/question.service';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,7 @@ import { DropdownDirective } from './dropdown.directive';
     FormsModule,
     HttpModule
   ],
-  providers: [],
+  providers: [QuestionService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
