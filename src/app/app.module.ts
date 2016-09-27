@@ -11,6 +11,7 @@ import { QuestionListComponent } from './questions/question-list/question-list.c
 import { QuestionItemComponent } from './questions/question-list/question-item.component';
 import { QuestionAreaComponent } from './questions/question-area/question-area.component';
 import { AnswerAreaComponent } from './questions/answer-area/answer-area.component';
+import { DropdownDirective } from './dropdown.directive';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { AnswerAreaComponent } from './questions/answer-area/answer-area.compone
     QuestionListComponent,
     QuestionItemComponent,
     QuestionAreaComponent,
-    AnswerAreaComponent
+    AnswerAreaComponent,
+    DropdownDirective
   ],
   imports: [
     BrowserModule,

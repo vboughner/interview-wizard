@@ -8,26 +8,27 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><a href="#">Questions</a></li>
-        <li><a href="#">Answers</a></li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li class="dropdown">
+        <li class="dropdown" appDropdown>
           <a href="#" class="dropdown-toggle" role="button" aria-haspopup="true" aria-expanded="false">Category <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="#">JavaScript</a></li>
             <li><a href="#">Angular2</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">Logout</a></li>
           </ul>
         </li>
-        <li class="dropdown">
+        <!--
+        <li><a href="#">Questions</a></li>
+        <li><a href="#">Answers</a></li>
+        -->
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown" appDropdown>
           <a href="#" class="dropdown-toggle" role="button" aria-haspopup="true" aria-expanded="false">User <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Login</a></li>
-            <li><a href="#">Other</a></li>
+            <li><a href="#">Profile</a></li>
+            <li><a href="#">My Questions</a></li>
+            <li><a href="#">My Answers</a></li>
             <li role="separator" class="divider"></li>
-            <li><a href="#">Logout</a></li>
+            <li><a href="#">Sign Out</a></li>
           </ul>
         </li>
       </ul>
