@@ -1,8 +1,8 @@
 <div>
   <ul class="list-group">
-    <app-question-item *ngFor="let question of questions" [question]="question" (click)="onSelected(question)"></app-question-item>
+    <app-question-item *ngFor="let question of questions; let i = index" [question]="question" [questionId]="i"></app-question-item>
   </ul>
   <div>
-    <a class="btn btn-success">New Question</a>
+    <a class="btn btn-success" [routerLink]="['new']">New Question</a>
   </div>
 </div>

@@ -2,33 +2,32 @@
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">Interview Wizard</a>
+      <a class="navbar-brand" [routerLink]="['/']">Interview Wizard</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li class="dropdown" appDropdown>
-          <a href="#" class="dropdown-toggle" role="button" aria-haspopup="true" aria-expanded="false">Category <span class="caret"></span></a>
+          <a class="dropdown-toggle" role="button" aria-haspopup="true" aria-expanded="false">Category <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">JavaScript</a></li>
-            <li><a href="#">Angular2</a></li>
+            <li><a>JavaScript</a></li>
+            <li><a>Angular2</a></li>
           </ul>
         </li>
         <!--
-        <li><a href="#">Questions</a></li>
-        <li><a href="#">Answers</a></li>
+        <li><a [routerLink]="['/questions']">Questions</a></li>
         -->
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown" appDropdown>
-          <a href="#" class="dropdown-toggle" role="button" aria-haspopup="true" aria-expanded="false">User <span class="caret"></span></a>
+          <a class="dropdown-toggle" role="button" aria-haspopup="true" aria-expanded="false">User <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Profile</a></li>
-            <li><a href="#">My Questions</a></li>
-            <li><a href="#">My Answers</a></li>
+            <li><a>Profile</a></li>
+            <li><a>My Questions</a></li>
+            <li><a>My Answers</a></li>
             <li role="separator" class="divider"></li>
-            <li><a href="#">Sign Out</a></li>
+            <li><a>Sign Out</a></li>
           </ul>
         </li>
       </ul>

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 import { Question } from '../question';
 
@@ -7,13 +7,7 @@ import { Question } from '../question';
   templateUrl: './question-item.component.html',
   styles: []
 })
-export class QuestionItemComponent implements OnInit {
+export class QuestionItemComponent {
   @Input() question: Question;
-  questionId: number;
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+  @Input() questionId: number;
 }

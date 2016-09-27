@@ -22,4 +22,8 @@ export class QuestionService {
   getQuestions() {
     return this.questions;
   }
+
+  getQuestion(id: number) {
+    return this.questions[id];
+  }
 }

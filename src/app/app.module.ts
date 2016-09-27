@@ -13,6 +13,9 @@ import { QuestionAreaComponent } from './questions/question-area/question-area.c
 import { AnswerAreaComponent } from './questions/answer-area/answer-area.component';
 import { DropdownDirective } from './dropdown.directive';
 import { QuestionService } from './questions/question.service';
+import { routing } from './app.routing';
+import { QuestionEditComponent } from './questions/question-edit/question-edit.component';
+import { QuestionStartComponent } from './questions/question-start.component';
 
 @NgModule({
   declarations: [
@@ -24,12 +27,15 @@ import { QuestionService } from './questions/question.service';
     QuestionItemComponent,
     QuestionAreaComponent,
     AnswerAreaComponent,
-    DropdownDirective
+    DropdownDirective,
+    QuestionEditComponent,
+    QuestionStartComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    routing
   ],
   providers: [QuestionService],
   bootstrap: [AppComponent]

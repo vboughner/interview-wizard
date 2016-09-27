@@ -1,24 +1,17 @@
-<div *ngIf="!selectedQuestion">
+<div>
   <div class="row">
     <div class="col-sm-12">
-      <h3>Please select a question</h3>
-    </div>
-  </div>
-</div>
-<div *ngIf="selectedQuestion">
-  <div class="row">
-    <div class="col-sm-12">
-      <h3>{{selectedQuestion?.name}}</h3>
+      <h3>{{selectedQuestion.name}}</h3>
     </div>
   </div>
   <div class="row">
     <div class="col-sm-12">
       <div class="pull-right">
         <img class="img-responsive"
-             src="{{selectedQuestion?.imagePath}}"
+             src="{{selectedQuestion.imagePath}}"
              style="max-height: 200px;"/>
       </div>
-      <p>{{selectedQuestion?.description}}</p>
+      <p>{{selectedQuestion.description}}</p>
     </div>
   </div>
   <div class="row">
