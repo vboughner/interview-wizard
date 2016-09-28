@@ -1,6 +1,7 @@
 <a [routerLink]="[questionId]" class="list-group-item clearfix" routerLinkActive="active">
   <div class="pull-right">
-    <img class="img-responsive"
+    <img *ngIf="question.imagePath"
+         class="img-responsive"
          src="{{question.imagePath}}"
          style="max-height: 50px;"/>
   </div>
