@@ -1,7 +1,7 @@
 <div>
   <div class="row">
     <div class="col-sm-12">
-      <h3 *ngIf="isAdd">Add a New Question</h3>
+      <h3 *ngIf="isAdd">New Question</h3>
       <h3 *ngIf="!isAdd">Edit Question</h3>
       <form id="question-list-add" (ngSubmit)="onSubmit(f.value)" #f="ngForm">
         <div class="row">
@@ -49,8 +49,6 @@
           <div class="col-sm-12">
             <button class="btn btn-success" type="submit" *ngIf="isAdd" [disabled]="!f.valid">Add</button>
             <button class="btn btn-success" type="submit" *ngIf="!isAdd">Save</button>
-            <button class="btn btn-danger" *ngIf="!isAdd" (click)="onDelete()">Delete</button>
-            <button class="btn btn-primary" (click)="onCancel()">Cancel</button>
           </div>
         </div>
 

@@ -1,5 +1,5 @@
-import {Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
 import { Question } from '../question';
@@ -15,7 +15,9 @@ export class QuestionAreaComponent implements OnInit, OnDestroy {
   private questionIndex: number;
   selectedQuestion: Question;
 
-  constructor(private route: ActivatedRoute, private questionService: QuestionService) { }
+  constructor(private router: Router,
+              private route: ActivatedRoute,
+              private questionService: QuestionService) { }
 
   ngOnInit() {
     this.subscription = this.route.params.subscribe(
@@ -28,5 +30,10 @@ export class QuestionAreaComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
+  }
+
+  onDelete() {
+      this.questionService.deleteQuestion(this.selectedQuestion);
+      this.router.navigate(['/questions']);
   }
 }

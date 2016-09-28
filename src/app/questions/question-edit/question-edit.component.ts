@@ -41,28 +41,12 @@ export class QuestionEditComponent implements OnInit {
   onSubmit(value: Question) {
     const submittedQuestion = new Question(value.name, value.description, value.imagePath);
     if (this.isAdd) {
-      this.questionService.addQuestion(submittedQuestion);
+      const index = this.questionService.addQuestion(submittedQuestion);
+      this.router.navigate(['/questions', index]);
     }
     else {
       this.questionService.editQuestion(this.selectedQuestion, submittedQuestion);
-    }
-  }
-
-  onDelete() {
-    this.questionService.deleteQuestion(this.selectedQuestion);
-    this.router.navigate(['/questions']);
-    // bug: why does form clear?
-  }
-
-  onCancel() {
-    if (this.isAdd) {
-      console.log('isAdd ' + '/questions');
-      this.router.navigate(['/questions']);
-    }
-    else {
-      console.log('isAdd ' + '/questions' + this.questionIndex);
-      this.router.navigateByUrl('/questions/' + this.questionIndex);
-      // bug: why is all the form data in the URL?
+      this.router.navigate(['/questions', this.questionIndex]);
     }
   }
 }

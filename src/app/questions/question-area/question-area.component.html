@@ -1,17 +1,19 @@
 <div>
   <div class="row">
     <div class="col-sm-12">
-      <h3>{{selectedQuestion.name}}</h3>
+      <h3>{{selectedQuestion?.name}}</h3>
     </div>
   </div>
   <div class="row">
     <div class="col-sm-12">
       <div class="pull-right">
         <img class="img-responsive"
-             src="{{selectedQuestion.imagePath}}"
+             src="{{selectedQuestion?.imagePath}}"
              style="max-height: 200px;"/>
       </div>
-      <p>{{selectedQuestion.description}}</p>
+      <p>{{selectedQuestion?.description}}</p>
+      <button class="btn btn-success" [routerLink]="['edit']">Edit Question</button>
+      <button class="btn btn-danger" (click)="onDelete()">Delete Question</button>
     </div>
   </div>
   <div class="row">

@@ -32,8 +32,10 @@ export class QuestionService {
     this.questions[index] = newQuestion;
   }
 
-  addQuestion(newQuestion: Question) {
+  addQuestion(newQuestion: Question): number {
+    const index = this.questions.length;
     this.questions.push(newQuestion);
+    return index;
   }
 
   addQuestions(questions: Question[]) {
