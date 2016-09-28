@@ -41,14 +41,14 @@
               name="imagePath"
               #imagePath="ngModel"
               pattern="(ftp|http|https):\/\/[^ ]+">
-            <span class="help-block" *ngIf="!imagePath.valid">Please enter a complete URL for the image</span>
+            <span class="help-block" *ngIf="!imagePath.valid">Please enter a correct and complete URL for the image</span>
           </div>
         </div>
 
         <div class="row">
           <div class="col-sm-12">
             <button class="btn btn-success" type="submit" *ngIf="isAdd" [disabled]="!f.valid">Add</button>
-            <button class="btn btn-success" type="submit" *ngIf="!isAdd">Save</button>
+            <button class="btn btn-success" type="submit" *ngIf="!isAdd" [disabled]="!f.valid">Save</button>
           </div>
         </div>
 
