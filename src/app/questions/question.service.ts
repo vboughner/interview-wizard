@@ -26,4 +26,22 @@ export class QuestionService {
   getQuestion(id: number) {
     return this.questions[id];
   }
+
+  editQuestion(oldQuestion: Question, newQuestion: Question) {
+    const index = this.questions.indexOf(oldQuestion);
+    this.questions[index] = newQuestion;
+  }
+
+  addQuestion(newQuestion: Question) {
+    this.questions.push(newQuestion);
+  }
+
+  addQuestions(questions: Question[]) {
+    Array.prototype.push.apply(this.questions, questions);
+  }
+
+  deleteQuestion(oldQuestion: Question) {
+    const index = this.questions.indexOf(oldQuestion);
+    this.questions.splice(index, 1);
+  }
 }
