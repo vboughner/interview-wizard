@@ -11,6 +11,8 @@ import { QuestionService } from '../question.service';
   styles: []
 })
 export class QuestionAreaComponent implements OnInit, OnDestroy {
+  private isConfirmDeleteVisible: boolean = false;
+  private confirmDeleteMsg;
   private subscription: Subscription;
   private questionIndex: number;
   selectedQuestion: Question;
@@ -33,7 +35,18 @@ export class QuestionAreaComponent implements OnInit, OnDestroy {
   }
 
   onDelete() {
-      this.questionService.deleteQuestion(this.selectedQuestion);
-      this.router.navigate(['/questions']);
+    this.confirmDeleteMsg = 'Are you sure you wish to delete the question "' +
+    this.selectedQuestion.name + '"';
+    this.isConfirmDeleteVisible = true;
+  }
+
+  confirmDelete() {
+    this.isConfirmDeleteVisible = false;
+    this.questionService.deleteQuestion(this.selectedQuestion);
+    this.router.navigate(['/questions']);
+  }
+
+  cancelDelete() {
+    this.isConfirmDeleteVisible = false;
   }
 }
