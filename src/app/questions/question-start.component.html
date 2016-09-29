@@ -1,0 +1,30 @@
+<div class="row">
+  <div class="col-sm-12">
+    <h3>Interview Wizard</h3>
+    <p>
+      Welcome! Please see the list of technical interview questions on the left.
+      Selecting one will take you to a more detailed explanation.
+      <span *ngIf="!isSignedIn()">
+      If you'd like to edit or add questions, please
+      <a [routerLink]="['/signup']">sign up</a> or <a [routerLink]="['/signin']">sign in</a>.
+      </span>
+      <span *ngIf="isSignedIn()">
+      You are signed in and may edit questions.
+      </span>
+    </p>
+    <p>
+      This is a full-stack application, using <a href="https://angular.io/">Angular2</a>
+      on the front-end (user interface), and <a href="https://firebase.google.com/">Firebase</a>
+      on the back-end (data storage and authentication).
+      Interview Wizard is under development by <a href="https://www.linkedin.com/in/vboughner">Van Boughner</a>
+      and you may find the <a href="https://github.com/vboughner/interview-wizard">source code on github</a>.
+    </p>
+    <p>
+      Many thanks to those who worked so hard on the underlying technologies and provided guidance:
+      <a href="https://angular.io/">Angular</a>,
+      <a href="https://cli.angular.io/">Angular CLI</a>,
+      <a href="https://firebase.google.com/">Firebase</a>, and this
+      <a href="https://www.udemy.com/the-complete-guide-to-angular-2">Udemy Course</a>.
+    </p>
+  </div>
+</div>

@@ -1,13 +1,15 @@
 import { Component } from '@angular/core';
 
+import { AuthService } from '../auth/auth.service';
+
 @Component({
   selector: 'app-question-start',
-  template: `
-    <div class="row">
-      <div class="col-sm-12">
-        <p>Please start by selecting a question on the left.</p>
-      </div>
-    </div>
-  `
+  templateUrl: './question-start.component.html'
 })
-export class QuestionStartComponent {}
+export class QuestionStartComponent {
+  constructor(private authService: AuthService) {}
+
+  isSignedIn(): boolean {
+    return this.authService.isAuthenticated();
+  }
+}

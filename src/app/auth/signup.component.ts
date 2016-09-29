@@ -15,17 +15,20 @@ export class SignupComponent implements OnInit {
   constructor(private fb: FormBuilder, private authService: AuthService) {}
 
   ngOnInit(): any {
-      this.signupForm = this.fb.group({
-          email: ['', Validators.compose([
-              Validators.required,
-              this.isEmail
-          ])],
-          password: ['', Validators.required],
-          confirmPassword: ['', Validators.compose([
-              Validators.required,
-              this.isEqualPassword.bind(this)
-          ])],
-      });
+    this.signupForm = this.fb.group({
+      email: ['', Validators.compose([
+        Validators.required,
+        this.isEmail
+      ])],
+      password: ['', Validators.compose([
+        Validators.required,
+        this.isMinLengthPassword
+      ])],
+      confirmPassword: ['', Validators.compose([
+        Validators.required,
+        this.isEqualPassword.bind(this)
+      ])],
+    });
   }
 
   onSignup() {
@@ -33,18 +36,26 @@ export class SignupComponent implements OnInit {
   }
 
   isEmail(control: FormControl): {[s: string]: boolean} {
-      if (!control.value.match(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/)) {
-          return {noEmail: true};
-      }
+    if (!control.value.match(/^[a-zA-Z0-9_.]+@[a-zA-Z0-9_.]+\.[a-zA-Z]+$/)) {
+      return {noEmail: true};
+    }
+    return null;
+  }
+
+  isMinLengthPassword(control: FormControl): {[s: string]: boolean} {
+    if (control.value.length < 6) {
+      return {passwordTooShort: true};
+    }
+    return null;
   }
 
   isEqualPassword(control: FormControl): {[s: string]: boolean} {
-      if (!this.signupForm) {
-          return {passwordsNotMatch: true};
-
-      }
-      if (control.value !== this.signupForm.controls['password'].value) {
-          return {passwordsNotMatch: true};
-      }
+    if (!this.signupForm) {
+      return {passwordsNotMatch: true};
+    }
+    if (control.value !== this.signupForm.controls['password'].value) {
+      return {passwordsNotMatch: true};
+    }
+    return null;
   }
 }
