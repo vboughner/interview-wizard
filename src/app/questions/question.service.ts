@@ -20,7 +20,7 @@ export class QuestionService {
       'http://www.greatgrubclub.com/domains/greatgrubclub.com/local/media/images/medium/4_1_1_kiwi.jpg')
   ];
 
-  constructor() { }
+  constructor() {}
 
   getQuestions() {
     return this.questions;

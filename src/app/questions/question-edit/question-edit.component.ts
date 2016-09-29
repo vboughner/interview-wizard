@@ -15,7 +15,7 @@ export class QuestionEditComponent implements OnInit {
   selectedQuestion: Question;
   isAdd: boolean;
 
-  constructor(private router: Router, private route: ActivatedRoute, private questionService: QuestionService) { }
+  constructor(private router: Router, private route: ActivatedRoute, private questionService: QuestionService) {}
 
   ngOnInit() {
     this.subscription = this.route.params.subscribe(

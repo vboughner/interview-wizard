@@ -49,4 +49,4 @@ import { AuthService } from './auth/auth.service';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

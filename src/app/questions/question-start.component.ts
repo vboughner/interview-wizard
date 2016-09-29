@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-question-start',
@@ -8,14 +8,6 @@ import { Component, OnInit } from '@angular/core';
         <p>Please start by selecting a question on the left.</p>
       </div>
     </div>
-  `,
-  styles: []
+  `
 })
-export class QuestionStartComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
-}
+export class QuestionStartComponent {}

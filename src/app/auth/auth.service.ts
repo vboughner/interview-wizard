@@ -8,7 +8,7 @@ declare var firebase: any;
 @Injectable()
 export class AuthService {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router) {}
 
   signupUser(user: User) {
     firebase.auth().createUserWithEmailAndPassword(user.email, user.password)
