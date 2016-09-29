@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs';
 
 import { Question } from '../question';
 import { QuestionService } from '../question.service';
+import { AuthService } from '../../auth/auth.service';
 
 @Component({
   selector: 'app-question-area',
@@ -19,7 +20,8 @@ export class QuestionAreaComponent implements OnInit, OnDestroy {
 
   constructor(private router: Router,
               private route: ActivatedRoute,
-              private questionService: QuestionService) { }
+              private questionService: QuestionService,
+              private authService: AuthService) {}
 
   ngOnInit() {
     this.subscription = this.route.params.subscribe(
@@ -32,6 +34,10 @@ export class QuestionAreaComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
+  }
+
+  isSignedIn(): boolean {
+    return this.authService.isAuthenticated();
   }
 
   onDelete() {

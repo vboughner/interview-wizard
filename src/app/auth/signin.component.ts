@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 import { AuthService } from './auth.service';
 
@@ -12,7 +13,9 @@ export class SigninComponent implements OnInit {
   error = false;
   errorMessage = '';
 
-  constructor(private fb: FormBuilder, private authService: AuthService) {}
+  constructor(private fb: FormBuilder,
+              private authService: AuthService,
+              private router: Router) {}
 
   ngOnInit():any {
       this.signinForm = this.fb.group({
@@ -23,5 +26,6 @@ export class SigninComponent implements OnInit {
 
   onSignin() {
     this.authService.signinUser(this.signinForm.value);
+    this.router.navigate(['/']);
   }
 }

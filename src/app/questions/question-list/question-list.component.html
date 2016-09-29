@@ -3,6 +3,6 @@
     <app-question-item *ngFor="let question of questions; let i = index" [question]="question" [questionId]="i"></app-question-item>
   </ul>
   <div>
-    <a class="btn btn-success" [routerLink]="['new']">New Question</a>
+    <a class="btn btn-success" *ngIf="isSignedIn()" [routerLink]="['new']">New Question</a>
   </div>
 </div>
