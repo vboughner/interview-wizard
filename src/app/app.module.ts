@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
@@ -16,6 +16,9 @@ import { QuestionService } from './questions/question.service';
 import { routing } from './app.routing';
 import { QuestionEditComponent } from './questions/question-edit/question-edit.component';
 import { QuestionStartComponent } from './questions/question-start.component';
+import { SignupComponent } from './auth/signup.component';
+import { SigninComponent } from './auth/signin.component';
+import { AuthService } from './auth/auth.service';
 
 @NgModule({
   declarations: [
@@ -29,15 +32,21 @@ import { QuestionStartComponent } from './questions/question-start.component';
     AnswerAreaComponent,
     DropdownDirective,
     QuestionEditComponent,
-    QuestionStartComponent
+    QuestionStartComponent,
+    SignupComponent,
+    SigninComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    routing
+    routing,
+    ReactiveFormsModule
   ],
-  providers: [QuestionService],
+  providers: [
+    QuestionService,
+    AuthService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

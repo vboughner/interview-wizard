@@ -11,5 +11,17 @@
 </head>
 <body>
   <app-root>Loading...</app-root>
+  <script src="https://www.gstatic.com/firebasejs/3.4.1/firebase.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyCmsk_vMsNA4fpQVJZtPG9MrCX9Ucl__34",
+      authDomain: "interview-wizard.firebaseapp.com",
+      databaseURL: "https://interview-wizard.firebaseio.com",
+      storageBucket: "interview-wizard.appspot.com",
+      messagingSenderId: "681858677929"
+    };
+    firebase.initializeApp(config);
+  </script>
 </body>
 </html>

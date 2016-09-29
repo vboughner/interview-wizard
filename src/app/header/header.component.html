@@ -13,6 +13,8 @@
           <ul class="dropdown-menu">
             <li><a>JavaScript</a></li>
             <li><a>Angular2</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a>Add Category</a></li>
           </ul>
         </li>
         <!--
@@ -23,9 +25,8 @@
         <li class="dropdown" appDropdown>
           <a class="dropdown-toggle" role="button" aria-haspopup="true" aria-expanded="false">User <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a>Profile</a></li>
-            <li><a>My Questions</a></li>
-            <li><a>My Answers</a></li>
+            <li><a [routerLink]="['/signup']">Sign Up</a></li>
+            <li><a [routerLink]="['/signin']">Sign In</a></li>
             <li role="separator" class="divider"></li>
             <li><a>Sign Out</a></li>
           </ul>
