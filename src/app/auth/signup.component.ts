@@ -9,8 +9,6 @@ import { AuthService } from './auth.service';
 })
 export class SignupComponent implements OnInit {
   signupForm: FormGroup;
-  error = false;
-  errorMessage = '';
 
   constructor(private fb: FormBuilder, private authService: AuthService) {}
 
@@ -18,15 +16,15 @@ export class SignupComponent implements OnInit {
     this.signupForm = this.fb.group({
       email: ['', Validators.compose([
         Validators.required,
-        this.isEmail
+        this.isEmailValidator
       ])],
       password: ['', Validators.compose([
         Validators.required,
-        this.isMinLengthPassword
+        this.isMinLengthPasswordValidator
       ])],
       confirmPassword: ['', Validators.compose([
         Validators.required,
-        this.isEqualPassword.bind(this)
+        this.isEqualPasswordValidator.bind(this)
       ])],
     });
   }
@@ -35,21 +33,21 @@ export class SignupComponent implements OnInit {
     this.authService.signupUser(this.signupForm.value);
   }
 
-  isEmail(control: FormControl): {[s: string]: boolean} {
+  isEmailValidator(control: FormControl): {[s: string]: boolean} {
     if (!control.value.match(/^[a-zA-Z0-9_.]+@[a-zA-Z0-9_.]+\.[a-zA-Z]+$/)) {
       return {noEmail: true};
     }
     return null;
   }
 
-  isMinLengthPassword(control: FormControl): {[s: string]: boolean} {
+  isMinLengthPasswordValidator(control: FormControl): {[s: string]: boolean} {
     if (control.value.length < 6) {
       return {passwordTooShort: true};
     }
     return null;
   }
 
-  isEqualPassword(control: FormControl): {[s: string]: boolean} {
+  isEqualPasswordValidator(control: FormControl): {[s: string]: boolean} {
     if (!this.signupForm) {
       return {passwordsNotMatch: true};
     }
