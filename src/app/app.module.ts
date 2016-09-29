@@ -19,6 +19,7 @@ import { QuestionStartComponent } from './questions/question-start.component';
 import { SignupComponent } from './auth/signup.component';
 import { SigninComponent } from './auth/signin.component';
 import { AuthService } from './auth/auth.service';
+import { AuthGuard } from './auth/auth.guard';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { AuthService } from './auth/auth.service';
   ],
   providers: [
     QuestionService,
-    AuthService
+    AuthService,
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })
