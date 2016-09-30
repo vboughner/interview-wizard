@@ -1,9 +1,11 @@
-import { Injectable } from '@angular/core';
+import {Injectable, EventEmitter } from '@angular/core';
 
 import { Question } from './question';
+import { StorageService } from '../data/storage.service';
 
 @Injectable()
 export class QuestionService {
+  /*
   private questions: Question[] = [
     new Question('Are you a crash test dummy?',
       'Some employers will want to make sure you\'re not a dummy.  Experience with crash tests is not a positive.',
@@ -19,34 +21,65 @@ export class QuestionService {
       '"Kiwies".  Do you ever refer to yourself by naming a fruit?',
       'http://www.greatgrubclub.com/domains/greatgrubclub.com/local/media/images/medium/4_1_1_kiwi.jpg')
   ];
+  */
+  private questions: Question[] = [];
+  private questionsLoaded = false;
+  questionsChanged = new EventEmitter<Question[]>();
 
-  constructor() {}
+  constructor(private storageService: StorageService) {}
 
+  private loadQuestions() {
+    if (!this.questionsLoaded) {
+      this.storageService.fetchData('questions')
+        .subscribe(
+          (data: any) => {
+            const myArray = [];
+            for (let key in data) {
+              myArray.push(data[key]);
+            }
+            this.questions = myArray;
+            this.questionsChanged.emit(this.questions);
+          },
+          error => console.error(error)
+        );
+      this.questionsLoaded = true;
+      // console.log("questions are loading");
+    }
+  }
+
+  private saveQuestions() {
+    this.storageService.storeData('questions', this.questions).subscribe();
+    // console.log("questions are saving");
+  }
+
+  // todo: all callers of this get method should be subscribing to the emitter
   getQuestions() {
+    this.loadQuestions();
     return this.questions;
   }
 
+  // todo: all callers of this get method should be subscribing to the emitter
   getQuestion(id: number) {
+    this.loadQuestions();
     return this.questions[id];
   }
 
   editQuestion(oldQuestion: Question, newQuestion: Question) {
     const index = this.questions.indexOf(oldQuestion);
     this.questions[index] = newQuestion;
+    this.saveQuestions();
   }
 
   addQuestion(newQuestion: Question): number {
     const index = this.questions.length;
     this.questions.push(newQuestion);
+    this.saveQuestions();
     return index;
-  }
-
-  addQuestions(questions: Question[]) {
-    Array.prototype.push.apply(this.questions, questions);
   }
 
   deleteQuestion(oldQuestion: Question) {
     const index = this.questions.indexOf(oldQuestion);
     this.questions.splice(index, 1);
+    this.saveQuestions();
   }
 }

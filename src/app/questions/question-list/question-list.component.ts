@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
 
 import { Question } from '../question';
 import { QuestionService } from '../question.service';
@@ -8,7 +9,8 @@ import { AuthService } from '../../auth/auth.service';
   selector: 'app-question-list',
   templateUrl: './question-list.component.html'
 })
-export class QuestionListComponent implements OnInit {
+export class QuestionListComponent implements OnInit, OnDestroy {
+  private subscription: Subscription;
   questions: Question[] = [];
 
   constructor(private questionService: QuestionService,
@@ -16,6 +18,13 @@ export class QuestionListComponent implements OnInit {
 
   ngOnInit() {
     this.questions = this.questionService.getQuestions();
+    this.subscription = this.questionService.questionsChanged.subscribe(
+      (questions: Question[]) => this.questions = questions
+    )
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
   isSignedIn(): boolean {
