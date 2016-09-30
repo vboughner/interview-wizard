@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 
 import { AuthService } from './auth.service';
 
@@ -10,7 +11,9 @@ import { AuthService } from './auth.service';
 export class SignupComponent implements OnInit {
   signupForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private authService: AuthService) {}
+  constructor(private fb: FormBuilder,
+              private authService: AuthService,
+              private router: Router) {}
 
   ngOnInit(): any {
     this.signupForm = this.fb.group({
@@ -31,6 +34,7 @@ export class SignupComponent implements OnInit {
 
   onSignup() {
     this.authService.signupUser(this.signupForm.value);
+    this.router.navigate(['/']);
   }
 
   isEmailValidator(control: FormControl): {[s: string]: boolean} {

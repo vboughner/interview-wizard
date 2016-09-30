@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 
 import { User } from './user';
-import { Router } from '@angular/router';
 
 // firebase initialized in top-level index.html, this declaration allows access
 // to JavaScript object returned by the successful initialization of firebase
@@ -14,12 +13,15 @@ declare var firebase: any;
 @Injectable()
 export class AuthService {
 
-  constructor(private router: Router) {}
+  constructor() {}
 
   signupUser(user: User) {
     firebase.auth().createUserWithEmailAndPassword(user.email, user.password)
       .catch(function (error) {
         console.log(error);
+
+        // todo: add a better way than alert to handle errors when signing up
+        alert(error.message);
       });
   }
 
@@ -27,12 +29,15 @@ export class AuthService {
     firebase.auth().signInWithEmailAndPassword(user.email, user.password)
       .catch(function (error) {
         console.log(error);
+
+        // todo: add a better way than alert to handle errors when signing in
+        alert(error.message);
       });
   }
 
   signoutUser() {
     firebase.auth().signOut();
-    this.router.navigate(['/']);
+    // todo: add some sort of toast that appears after signing out
   }
 
   isAuthenticated() {
