@@ -4,13 +4,13 @@ This is a full-stack application, but only the source for the frontend is found 
 
 Interview Wizard is under development by Van Boughner, and is mainly intended to be useful for storing interview questions, and for demonstrating an ability to create single page applications.
 
-Some this project is boiler-plate, provided initially by the Angular2 CLI. Files that were added and modified are: README.md, src/index.html, and everything under src/app. 
+Some of this project is boiler-plate, provided initially by the Angular2 CLI. Files that were added and modified are: README.md, src/index.html, and everything under src/app. 
 
-Hierarchy of components (you'll find all these in src/app):
+Hierarchy of user interface components (add '.component.ts' to the names below, to find these files):
 
-Under 'app': header, signin, signup, questions, footer
+- under 'app': header, signin, signup, questions, footer
 
-Under 'questions': question-start, question-area.component, question-edit, question-list, question-item
+- under 'questions': question-start, question-area.component, question-edit, question-list, question-item
 
 
 Routing is handled in app.routing and questions/questions.routes
