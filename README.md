@@ -4,6 +4,8 @@ This is a full-stack application, but only the source for the frontend is found 
 
 Interview Wizard is under development by Van Boughner, and is mainly intended to be useful for storing interview questions, and for demonstrating an ability to create single page applications.
 
+Running instance this application can be found at http://interview-wizard.com
+
 Some of this project is boiler-plate, provided initially by the Angular2 CLI. Files that were added and modified are: README.md, src/index.html, and everything under src/app. 
 
 Hierarchy of user interface components (add '.component.ts' to the names below, to find these files):
