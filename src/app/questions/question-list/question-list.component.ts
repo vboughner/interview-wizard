@@ -5,6 +5,9 @@ import { Question } from '../question';
 import { QuestionService } from '../question.service';
 import { AuthService } from '../../auth/auth.service';
 
+/*
+ * Displays a list of all questions.
+ */
 @Component({
   selector: 'app-question-list',
   templateUrl: './question-list.component.html'

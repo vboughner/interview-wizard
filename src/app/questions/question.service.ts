@@ -5,30 +5,20 @@ import { StorageService } from '../data/storage.service';
 
 @Injectable()
 export class QuestionService {
-  /*
-  private questions: Question[] = [
-    new Question('Are you a crash test dummy?',
-      'Some employers will want to make sure you\'re not a dummy.  Experience with crash tests is not a positive.',
-      'http://assets.uvamagazine.org/images/uploads/2009/01-Spring/Research/Dummy.jpg'),
-    new Question('Where are you from?',
-      'This is a likely a way to discover what are your interests, based on the location of your home.  You should go ahead and let them know who you are.',
-      'https://cdn3.iconfinder.com/data/icons/streamline-icon-set-free-pack/48/Streamline-18-512.png'),
-    new Question('What do you think of jam made from raspberries?',
-      'This question might be asked whenever there are raspberries involved in the project.',
-      'http://kingofwallpapers.com/fruit-images/fruit-images-004.jpg'),
-    new Question('Are you from New Zealand?',
-      'Some employers will want to know if you are from New Zealand, where people refer to themselves as' +
-      '"Kiwies".  Do you ever refer to yourself by naming a fruit?',
-      'http://www.greatgrubclub.com/domains/greatgrubclub.com/local/media/images/medium/4_1_1_kiwi.jpg')
-  ];
-  */
+  // in-memory storage for the entire list of questions
   private questions: Question[] = [];
   private questionsLoaded = false;
+
+  // this emitter helps update components that cannot immediately be loaded
+  // when the application starts, because the questions are not yet available,
+  // by subscribing to it, and watching for changes, these components can
+  // update themselves once the questions are available
   questionsChanged = new EventEmitter<Question[]>();
 
   constructor(private storageService: StorageService) {}
 
-  private loadQuestions() {
+  // loads the questions from cloud storage, currently loaded only once, at the beginning
+  private loadQuestions(): void {
     if (!this.questionsLoaded) {
       this.storageService.fetchData('questions')
         .subscribe(
@@ -47,29 +37,38 @@ export class QuestionService {
     }
   }
 
-  private saveQuestions() {
+  // saves the questions to cloud storage
+  // call this only when changes are made (add, edit, or delete)
+  private saveQuestions(): void {
     this.storageService.storeData('questions', this.questions).subscribe();
     // console.log("questions are saving");
   }
 
-  // todo: all callers of this get method should be subscribing to the emitter
-  getQuestions() {
+  // gets the entire list of questions, don't modify the returned array
+  // callers of this get method should also subscribe to questionsChanged emitter
+  getQuestions(): Question[] {
     this.loadQuestions();
     return this.questions;
   }
 
-  // todo: all callers of this get method should be subscribing to the emitter
-  getQuestion(id: number) {
+  // gets just one question, given the index, don't modify the returns Question
+  // callers of this get method should also subscribe to questionsChanged emitter
+  getQuestion(id: number): Question {
     this.loadQuestions();
     return this.questions[id];
   }
 
-  editQuestion(oldQuestion: Question, newQuestion: Question) {
+  // call this when you edit a questions and need the
+  // rest of the application and the storage to be updated
+  editQuestion(oldQuestion: Question, newQuestion: Question): void {
     const index = this.questions.indexOf(oldQuestion);
     this.questions[index] = newQuestion;
     this.saveQuestions();
   }
 
+  // call this when you add a question and need the
+  // rest of the application and the storage to be updated
+  // returns the index where new question was stored in array
   addQuestion(newQuestion: Question): number {
     const index = this.questions.length;
     this.questions.push(newQuestion);
@@ -77,7 +76,9 @@ export class QuestionService {
     return index;
   }
 
-  deleteQuestion(oldQuestion: Question) {
+  // call this when you delete a question and need the
+  // rest of the application and the storage to be updated
+  deleteQuestion(oldQuestion: Question): void {
     const index = this.questions.indexOf(oldQuestion);
     this.questions.splice(index, 1);
     this.saveQuestions();

@@ -3,8 +3,14 @@ import { Injectable } from '@angular/core';
 import { User } from './user';
 import { Router } from '@angular/router';
 
+// firebase initialized in top-level index.html, this declaration allows access
+// to JavaScript object returned by the successful initialization of firebase
 declare var firebase: any;
 
+/*
+ * Authentication is handled by calling the firebase service (in the cloud) to
+ * add and authenticate users by email address and password.
+ */
 @Injectable()
 export class AuthService {
 

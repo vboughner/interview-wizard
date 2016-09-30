@@ -6,6 +6,10 @@ import { Question } from '../question';
 import { QuestionService } from '../question.service';
 import { AuthService } from '../../auth/auth.service';
 
+/*
+ * Displays details about a single question, and includes buttons for editing
+ * or deleting the question.
+ */
 @Component({
   selector: 'app-question-area',
   templateUrl: './question-area.component.html',
@@ -14,7 +18,8 @@ import { AuthService } from '../../auth/auth.service';
 export class QuestionAreaComponent implements OnInit, OnDestroy {
   private isConfirmDeleteVisible: boolean = false;
   private confirmDeleteMsg;
-  private subscription: Subscription;
+  private routeSubscription: Subscription;
+  private questionSubscription: Subscription;
   private questionIndex: number;
   selectedQuestion: Question;
 
@@ -24,16 +29,25 @@ export class QuestionAreaComponent implements OnInit, OnDestroy {
               private authService: AuthService) {}
 
   ngOnInit() {
-    this.subscription = this.route.params.subscribe(
+    this.routeSubscription = this.route.params.subscribe(
       (params: any) => {
         this.questionIndex = params['id'];
         this.selectedQuestion = this.questionService.getQuestion(this.questionIndex);
       }
     );
+
+    this.questionSubscription = this.questionService.questionsChanged.subscribe(
+      (questions: Question[]) => {
+        if (this.questionIndex >= 0 && this.questionIndex < questions.length) {
+          this.selectedQuestion = questions[this.questionIndex];
+        }
+      }
+    )
   }
 
   ngOnDestroy() {
-    this.subscription.unsubscribe();
+    this.routeSubscription.unsubscribe();
+    this.questionSubscription.unsubscribe();
   }
 
   isSignedIn(): boolean {
