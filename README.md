@@ -1,40 +1,25 @@
 ## InterviewWizard
 
-This is a full-stack application, using Angular2 on the front-end (user interface, and the code is found here),
-and Firebase on the back-end (data storage and authentication).
+This is a full-stack application, but only the source for the frontend is found here.  Using Angular2 for the front-end (user interface), and Firebase for the backend (data storage and authentication).
 
-Interview Wizard is under development by Van Boughner and source code is on github at https://github.com/vboughner/interview-wizard
+Interview Wizard is under development by Van Boughner, and is mainly intended to be useful for storing interview questions, and for demonstrating an ability to create single page applications.
 
-Some this project is boiler-plate, provided initially by the Angular2 Command Line Interface.
-Files that were added and modified are: README.md, src/index.html, and everything under src/app. 
+Some this project is boiler-plate, provided initially by the Angular2 CLI. Files that were added and modified are: README.md, src/index.html, and everything under src/app. 
 
-Hierarchy of user interface components you'll find in src/app:
+Hierarchy of components (you'll find all these in src/app):
 
-app.component
-  |
-  header/header.component
-  auth/signin.component
-  auth/signup.component
-  footer/footer.component
-  questions/questions.component
-     |
-     question-start.component
-     question-area/question-area.component
-     question-edit/question-edit.component
-     question-list/question-list.component
-       |
-       question-item.component
+Under 'app': header, signin, signup, questions, footer
+
+Under 'questions': question-start, question-area.component, question-edit, question-list, question-item
 
 
-Routing information is in app.routing.ts and questions/questions.routes.ts, route protection is handled in auth/auth.service
+Routing is handled in app.routing and questions/questions.routes
+ 
+Signup, sign in, and route protection are handled in auth/auth.service, Firebase is used to store authentication information.
 
-Signup and sign in are managed by the AuthService, which uses Firebase backend for handling authenitcation
+Data model is managed by questions/question.service and cloud storage of the data is handled by data/storage.service (also using Firebase for the backend).
 
-Data model is managed by questions/question.service
-
-Cloud storage for the application is handled by data/storage.service (also using Firebase for the backend)
-
-Not implemented yet: app/src/answer-area/answer-area.component, and it will contain code for display the answers for questions
+Not implemented yet: app/src/answer-area/answer-area.component, and it will contain code for display the answers for questions.
 
 
 
