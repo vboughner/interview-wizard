@@ -28,7 +28,7 @@
              src="{{selectedQuestion?.imagePath}}"
              style="max-height: 200px;"/>
       </div>
-      <p>{{selectedQuestion?.description}}</p>
+      <p [innerHTML]="selectedQuestionFormattedDescription"></p>
       <button class="btn btn-success" *ngIf="isSignedIn()" [routerLink]="['edit']">Edit Question</button>
       <button class="btn btn-danger" *ngIf="isSignedIn()" (click)="onDelete()">Delete Question</button>
     </div>

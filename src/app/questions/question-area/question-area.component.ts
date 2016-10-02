@@ -22,24 +22,35 @@ export class QuestionAreaComponent implements OnInit, OnDestroy {
   private questionSubscription: Subscription;
   private questionIndex: number;
   selectedQuestion: Question;
+  selectedQuestionFormattedDescription: string = '';
 
   constructor(private router: Router,
               private route: ActivatedRoute,
               private questionService: QuestionService,
               private authService: AuthService) {}
 
+  // sets the selectedQuestion and the formatted description,
+  // call this whenever the selected question index changes
+  private setSelectedQuestion(q: Question) {
+    this.selectedQuestion = q;
+    if (q) {
+      this.selectedQuestionFormattedDescription =
+        this.selectedQuestionFormattedDescription = q.description.replace(/\r?\n/g, "<br />");
+    }
+  }
+
   ngOnInit() {
     this.routeSubscription = this.route.params.subscribe(
       (params: any) => {
         this.questionIndex = params['id'];
-        this.selectedQuestion = this.questionService.getQuestion(this.questionIndex);
+        this.setSelectedQuestion(this.questionService.getQuestion(this.questionIndex));
       }
     );
 
     this.questionSubscription = this.questionService.questionsChanged.subscribe(
       (questions: Question[]) => {
         if (this.questionIndex >= 0 && this.questionIndex < questions.length) {
-          this.selectedQuestion = questions[this.questionIndex];
+          this.setSelectedQuestion(questions[this.questionIndex]);
         }
       }
     )
