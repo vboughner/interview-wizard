@@ -23,10 +23,10 @@
   </div>
   <div class="row">
     <div class="col-sm-12">
-      <div class="pull-right">
+      <div class="pull-right" style="margin-left: 20px; margin-bottom: 15px">
         <img class="img-responsive"
              src="{{selectedQuestion?.imagePath}}"
-             style="max-height: 200px;"/>
+             style="max-height: 150px;"/>
       </div>
       <p [innerHTML]="selectedQuestionFormattedDescription"></p>
       <button class="btn btn-success" *ngIf="isSignedIn()" [routerLink]="['edit']">Edit Question</button>
