@@ -1,10 +1,10 @@
 ## InterviewWizard
 
-This is a full-stack application, but only the source for the frontend is found here.  Using Angular2 for the front-end (user interface), and Firebase for the backend (data storage and authentication).
+This is a full-stack application, but only the source for the frontend is found here. It uses Angular2 for the front-end (user interface), and Firebase for the backend (data storage and authentication).
 
 Interview Wizard is under development by Van Boughner, and is mainly intended to be useful for storing interview questions, and for demonstrating an ability to create single page applications.
 
-Running instance this application can be found at http://interview-wizard.com
+Running instance of this application can be found at http://interview-wizard.com
 
 Some of this project is boiler-plate, provided initially by the Angular2 CLI. Files that were added and modified are: README.md, src/index.html, and everything under src/app. 
 
@@ -12,16 +12,16 @@ Hierarchy of user interface components (add '.component.ts' to the names below, 
 
 - under 'app': header, signin, signup, questions, footer
 
-- under 'questions': question-start, question-area.component, question-edit, question-list, question-item
+- under 'questions': question-start, question-area, question-edit, question-list, question-item
 
 
 Routing is handled in app.routing and questions/questions.routes
  
 Signup, sign in, and route protection are handled in auth/auth.service, Firebase is used to store authentication information.
 
-Data model is managed by questions/question.service and cloud storage of the data is handled by data/storage.service (also using Firebase for the backend).
+Data model is managed by questions/question.service and cloud storage is handled by data/storage.service (also using Firebase for the backend).
 
-Not implemented yet: app/src/answer-area/answer-area.component, and it will contain code for display the answers for questions.
+Not implemented yet: app/src/answer-area/answer-area.component, and it will contain code for displaying the answers to questions, separately from the questions themselves.
 
 
 
