@@ -37,6 +37,7 @@
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
+        <li><a [routerLink]="['/admin']" *ngIf="isSignedInAdmin()">Admin</a></li>
         <li><a [routerLink]="['/signup']" *ngIf="!isSignedIn()"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
         <li><a [routerLink]="['/signin']" *ngIf="!isSignedIn()"><span class="glyphicon glyphicon-log-in"></span> Sign In</a></li>
         <li><a (click)="onSignOut()" *ngIf="isSignedIn()" style="cursor: pointer"><span class="glyphicon glyphicon-log-out"></span> Sign Out</a></li>
