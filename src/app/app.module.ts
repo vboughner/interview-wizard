@@ -21,7 +21,7 @@ import { SigninComponent } from './auth/signin.component';
 import { AuthService } from './auth/auth.service';
 import { AuthGuard } from './auth/auth.guard';
 import { StorageService } from './data/storage.service';
-import { AdminService } from './auth/admin.service';
+import { ProfileService } from './auth/profile.service';
 
 @NgModule({
   declarations: [
@@ -51,7 +51,7 @@ import { AdminService } from './auth/admin.service';
     AuthService,
     AuthGuard,
     StorageService,
-    AdminService
+    ProfileService
   ],
   bootstrap: [AppComponent]
 })

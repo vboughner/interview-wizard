@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { User } from './user';
-import { AdminService } from './admin.service';
+import { ProfileService } from './profile.service';
 
 // firebase initialized in top-level index.html, this declaration allows access
 // to JavaScript object returned by the successful initialization of firebase
@@ -14,7 +14,7 @@ declare var firebase: any;
 @Injectable()
 export class AuthService {
 
-  constructor(private adminService: AdminService) {}
+  constructor(private profileService: ProfileService) {}
 
   signupUser(user: User): void {
     firebase.auth().createUserWithEmailAndPassword(user.email, user.password)
@@ -44,13 +44,13 @@ export class AuthService {
   // returns true if the current user has been authenticated
   isAuthenticated(): boolean {
     var user = firebase.auth().currentUser;
-    console.log(user);
+    // console.log(user);
     return (user ? true : false);
   }
 
   // returns true if the current user has been authenticated and is an administrative user
   isAdmin(): boolean {
     var user = firebase.auth().currentUser;
-    return (user && this.adminService.isAdmin(user.email));
+    return (user && this.profileService.isAdmin(user.email));
   }
 }
