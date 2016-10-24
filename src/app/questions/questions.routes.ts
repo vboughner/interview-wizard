@@ -14,5 +14,7 @@ export const QUESTIONS_ROUTES: Routes = [
   { path: '', component: QuestionStartComponent },
   { path: 'new', component: QuestionEditComponent, canActivate: [AuthGuard] },
   { path: ':id', component: QuestionAreaComponent },
-  { path: ':id/edit', component: QuestionEditComponent, canActivate: [AuthGuard] }
+  { path: ':id/edit', component: QuestionEditComponent, canActivate: [AuthGuard] },
+  { path: ':id/answers/:answerId', component: QuestionAreaComponent, canActivate: [AuthGuard] },
+  { path: ':id/answers/:answerId/edit', component: QuestionAreaComponent, canActivate: [AuthGuard] }
 ];

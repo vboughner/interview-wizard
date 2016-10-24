@@ -12,8 +12,8 @@ import { SigninComponent } from './auth/signin.component';
 const APP_ROUTES: Routes = [
   { path: '', redirectTo: '/questions', pathMatch: 'full' },
   { path: 'questions', component: QuestionsComponent, children: QUESTIONS_ROUTES },
-  {path: 'signup', component: SignupComponent},
-  {path: 'signin', component: SigninComponent},
+  { path: 'signup', component: SignupComponent },
+  { path: 'signin', component: SigninComponent },
   { path: '**', redirectTo: 'questions' }
 ];
 

@@ -23,6 +23,7 @@ import { AuthGuard } from './auth/auth.guard';
 import { StorageService } from './data/storage.service';
 import { ProfileService } from './auth/profile.service';
 import { AnswersComponent } from './answers/answers.component';
+import { AnswerStartComponent } from './answers/answer-start.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { AnswersComponent } from './answers/answers.component';
     QuestionStartComponent,
     SignupComponent,
     SigninComponent,
-    AnswersComponent
+    AnswersComponent,
+    AnswerStartComponent
   ],
   imports: [
     BrowserModule,

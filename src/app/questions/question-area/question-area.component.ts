@@ -12,8 +12,7 @@ import { AuthService } from '../../auth/auth.service';
  */
 @Component({
   selector: 'app-question-area',
-  templateUrl: './question-area.component.html',
-  styles: []
+  templateUrl: './question-area.component.html'
 })
 export class QuestionAreaComponent implements OnInit, OnDestroy {
   private isConfirmDeleteVisible: boolean = false;
@@ -21,8 +20,12 @@ export class QuestionAreaComponent implements OnInit, OnDestroy {
   private routeSubscription: Subscription;
   private questionSubscription: Subscription;
   private questionIndex: number;
+
   selectedQuestion: Question;
   selectedQuestionFormattedDescription: string = '';
+
+  answerIsEdit: boolean = false;   // is true when editing an answer or adding a new one
+  answerId: number;                // is 'new' to add a new question, or a number when editing one
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -44,6 +47,13 @@ export class QuestionAreaComponent implements OnInit, OnDestroy {
       (params: any) => {
         this.questionIndex = params['id'];
         this.setSelectedQuestion(this.questionService.getQuestion(this.questionIndex));
+        if (params['answerId']) {
+          this.answerIsEdit = true;
+          this.answerId = params['answerId'];
+        }
+        else {
+          this.answerIsEdit = false;
+        }
       }
     );
 

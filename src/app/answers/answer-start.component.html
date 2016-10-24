@@ -1,0 +1,19 @@
+<div class="row">
+  <div class="col-sm-12">
+    <h3>Answers</h3>
+    <p>
+      There are no answers recorded for this question yet.
+      <span *ngIf="!isSignedIn()">
+      If you'd like to add answer, please
+      <a [routerLink]="['/signup']">sign up</a> or <a [routerLink]="['/signin']">sign in</a>.
+      </span>
+      <span *ngIf="isSignedIn()">
+      You are signed in and may answer this question.
+      </span>
+    </p>
+    <div>
+      <a class="btn btn-success" *ngIf="isSignedIn()" [routerLink]="['answers/new']">New Answer</a>
+      <a class="btn btn-success" *ngIf="isSignedIn()" [routerLink]="['answers/0/edit']">Edit First Answer</a>
+    </div>
+  </div>
+</div>

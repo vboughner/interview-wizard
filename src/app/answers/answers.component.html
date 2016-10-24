@@ -1,4 +1,7 @@
 <h3>Answers</h3>
-<div>
+<div *ngIf="!thereAreAnswers()">
+  <app-answer-start></app-answer-start>
+</div>
+<div *ngIf="thereAreAnswers()">
   <app-answer-area *ngFor="let answer of answers; let i = index" [answer]="answer" [answerId]="i"></app-answer-area>
 </div>
