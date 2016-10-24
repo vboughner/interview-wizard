@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Input } from '@angular/core/src/metadata/directives';
+
+import { Answer } from '../answer';
 
 /*
  * Area for displaying answers.  Not implemented yet.
@@ -10,6 +13,8 @@ import { Component, OnInit } from '@angular/core';
   styles: []
 })
 export class AnswerAreaComponent implements OnInit {
+  @Input() answer: Answer;
+  @Input() answerId: number;
 
   constructor() {}
 

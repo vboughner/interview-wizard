@@ -31,7 +31,7 @@ export class QuestionEditComponent implements OnInit {
         }
         else {
           this.questionIndex = -1;
-          this.selectedQuestion = new Question('','','');
+          this.selectedQuestion = new Question('','','', null);
           this.isAdd = true;
         }
       }
@@ -43,7 +43,7 @@ export class QuestionEditComponent implements OnInit {
   }
 
   onSubmit(value: Question) {
-    const submittedQuestion = new Question(value.name, value.description, value.imagePath);
+    const submittedQuestion = new Question(value.name, value.description, value.imagePath, null);
     if (this.isAdd) {
       const index = this.questionService.addQuestion(submittedQuestion);
       this.router.navigate(['/questions', index]);
