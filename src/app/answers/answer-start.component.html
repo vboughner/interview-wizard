@@ -1,10 +1,10 @@
 <div class="row">
   <div class="col-sm-12">
-    <h3>Answers</h3>
+    <h3>Answer Needed</h3>
     <p>
-      There are no answers recorded for this question yet.
+      There is no answer for this question.
       <span *ngIf="!isSignedIn()">
-      If you'd like to add answer, please
+      If you'd like to answer, please
       <a [routerLink]="['/signup']">sign up</a> or <a [routerLink]="['/signin']">sign in</a>.
       </span>
       <span *ngIf="isSignedIn()">
@@ -12,8 +12,8 @@
       </span>
     </p>
     <div>
-      <a class="btn btn-success" *ngIf="isSignedIn()" [routerLink]="['answers/new']">New Answer</a>
-      <a class="btn btn-success" *ngIf="isSignedIn()" [routerLink]="['answers/0/edit']">Edit First Answer</a>
+      <a class="btn btn-success" *ngIf="isSignedIn()" [routerLink]="['answers/new']">Answer the Question</a>
+      <a class="btn btn-success" *ngIf="isSignedIn()" [routerLink]="['answers/0/edit']">Edit First Answer (test)</a>
     </div>
   </div>
 </div>

@@ -1,43 +1,43 @@
 <div>
   <div class="row">
     <div class="col-sm-12">
-      <h3 *ngIf="isAdd">New Question</h3>
-      <h3 *ngIf="!isAdd">Edit Question</h3>
-      <form id="question-list-add" (ngSubmit)="onSubmit(f.value)" #f="ngForm">
+      <h3 *ngIf="isAdd">Answer the Question</h3>
+      <h3 *ngIf="!isAdd">Edit Answer</h3>
+      <form id="answer-list-add" (ngSubmit)="onSubmit(f.value)" #f="ngForm">
         <div class="row">
           <div class="col-sm-12 form-group">
-            <label for="question-name">Name</label>
+            <label for="answer-name">Name</label>
             <input
               type="text"
-              id="question-name"
+              id="answer-name"
               required
               class="form-control"
-              [ngModel]="selectedQuestion.name"
+              [ngModel]="selectedAnswer.name"
               name="name">
           </div>
         </div>
 
         <div class="row">
           <div class="col-sm-12 form-group">
-            <label for="question-description">Description</label>
+            <label for="answer-description">Description</label>
             <textarea
               rows="5"
-              id="question-description"
+              id="answer-description"
               class="form-control"
-              [ngModel]="selectedQuestion.description"
-              name="description">{{selectedQuestion.description}}</textarea>
+              [ngModel]="selectedAnswer.description"
+              name="description">{{selectedAnswer.description}}</textarea>
           </div>
         </div>
 
         <div class="row">
           <div class="col-sm-12 form-group">
-            <label for="question-image-path">Image URL</label>
+            <label for="answer-image-path">Image URL</label>
             <input
               type="text"
-              value="{{selectedQuestion.imagePath}}"
-              id="question-image-path"
+              value="{{selectedAnswer.imagePath}}"
+              id="answer-image-path"
               class="form-control"
-              [ngModel]="selectedQuestion.imagePath"
+              [ngModel]="selectedAnswer.imagePath"
               name="imagePath"
               #imagePath="ngModel"
               pattern="(ftp|http|https):\/\/[^ ]+">

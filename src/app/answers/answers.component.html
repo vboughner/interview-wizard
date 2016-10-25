@@ -1,7 +1,13 @@
-<h3>Answers</h3>
-<div *ngIf="!thereAreAnswers()">
-  <app-answer-start></app-answer-start>
+<div *ngIf="answerIsEdit">
+  <app-answer-edit [selectedQuestion]="selectedQuestion" [questionId]="questionId" [answerId]="answerId"></app-answer-edit>
 </div>
-<div *ngIf="thereAreAnswers()">
-  <app-answer-area *ngFor="let answer of answers; let i = index" [answer]="answer" [answerId]="i"></app-answer-area>
+<div *ngIf="!answerIsEdit">
+  <div *ngIf="!thereAreAnswers()">
+    <app-answer-start></app-answer-start>
+  </div>
+  <div *ngIf="thereAreAnswers()">
+    <h3 *ngIf="answers.length === 1">Answer</h3>
+    <h3 *ngIf="answers.length > 1">Answers</h3>
+    <app-answer-area *ngFor="let answer of answers; let i = index" [answer]="answer" [answerId]="i"></app-answer-area>
+  </div>
 </div>

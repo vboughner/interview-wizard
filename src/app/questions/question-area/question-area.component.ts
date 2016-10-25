@@ -19,8 +19,7 @@ export class QuestionAreaComponent implements OnInit, OnDestroy {
   private confirmDeleteMsg;
   private routeSubscription: Subscription;
   private questionSubscription: Subscription;
-  private questionIndex: number;
-
+  questionId: number;
   selectedQuestion: Question;
   selectedQuestionFormattedDescription: string = '';
 
@@ -45,8 +44,8 @@ export class QuestionAreaComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.routeSubscription = this.route.params.subscribe(
       (params: any) => {
-        this.questionIndex = params['id'];
-        this.setSelectedQuestion(this.questionService.getQuestion(this.questionIndex));
+        this.questionId = params['id'];
+        this.setSelectedQuestion(this.questionService.getQuestion(this.questionId));
         if (params['answerId']) {
           this.answerIsEdit = true;
           this.answerId = params['answerId'];
@@ -59,8 +58,8 @@ export class QuestionAreaComponent implements OnInit, OnDestroy {
 
     this.questionSubscription = this.questionService.questionsChanged.subscribe(
       (questions: Question[]) => {
-        if (this.questionIndex >= 0 && this.questionIndex < questions.length) {
-          this.setSelectedQuestion(questions[this.questionIndex]);
+        if (this.questionId >= 0 && this.questionId < questions.length) {
+          this.setSelectedQuestion(questions[this.questionId]);
         }
       }
     )
