@@ -2,6 +2,7 @@ import {Injectable, EventEmitter } from '@angular/core';
 
 import { Question } from './question';
 import { StorageService } from '../data/storage.service';
+import { Answer } from '../answers/answer';
 
 @Injectable()
 export class QuestionService {
@@ -82,5 +83,24 @@ export class QuestionService {
     const index = this.questions.indexOf(oldQuestion);
     this.questions.splice(index, 1);
     this.saveQuestions();
+  }
+
+  // call when you want to edit an answer to a question
+  editAnswer(question: Question, answerIndex: number, answer: Answer): void {
+    if (question.answers && answerIndex < question.answers.length) {
+      question.answers[answerIndex] = answer;
+    }
+    this.saveQuestions();
+  }
+
+  // call when you want to add an answer to a question,
+  // returns the index of the new answer
+  addAnswer(question: Question, answer: Answer): number {
+    if (!question.answers) {
+      question.answers = [];
+    }
+    let retval: number = question.answers.push(answer) - 1;
+    this.saveQuestions();
+    return retval;
   }
 }

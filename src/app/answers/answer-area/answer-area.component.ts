@@ -9,8 +9,7 @@ import { Answer } from '../answer';
 // todo: implement display of answers
 @Component({
   selector: 'app-answer-area',
-  templateUrl: './answer-area.component.html',
-  styles: []
+  templateUrl: './answer-area.component.html'
 })
 export class AnswerAreaComponent implements OnInit {
   @Input() answer: Answer;

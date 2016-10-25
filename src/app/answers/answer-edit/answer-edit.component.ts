@@ -3,7 +3,8 @@ import { Input } from '@angular/core/src/metadata/directives';
 
 import { Answer } from '../answer';
 import { Question } from '../../questions/question';
-import {Router} from "@angular/router";
+import { Router } from '@angular/router';
+import { QuestionService } from '../../questions/question.service';
 
 /*
  * Displays form for editing a single answer, and can be used both for
@@ -21,24 +22,19 @@ export class AnswerEditComponent implements OnInit {
   selectedAnswer: Answer = new Answer('test1', 'desc', '');
   isAdd: boolean = false;
 
-  constructor(private router: Router) { }
+  constructor(private questionService: QuestionService, private router: Router) { }
 
   ngOnInit() {
-    // todo: remove these debugging lines
-    // console.log('selectedQuestion is ' + this.selectedQuestion);
-    // console.log('answerId is ' + this.answerId);
     this.isAdd = (this.answerId === "new");
   }
 
   onSubmit(value: Answer) {
-    const submittedQuestion = new Answer(value.name, value.description, value.imagePath);
+    const submittedAnswer = new Answer(value.name, value.description, value.imagePath);
     if (this.answerId === "new") {
-      // todo: implement
-      // const index = this.questionService.addQuestion(submittedQuestion);
+      this.questionService.addAnswer(this.selectedQuestion, submittedAnswer);
     }
     else {
-      // todo: implement
-      // this.questionService.editQuestion(this.selectedQuestion, submittedQuestion);
+      this.questionService.editAnswer(this.selectedQuestion, Number(this.answerId), submittedAnswer);
     }
     this.router.navigate(['/questions', this.questionId]);
   }

@@ -1,7 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import {Component, Input, OnInit } from '@angular/core';
 
-import { Answer } from './answer';
 import { Question } from '../questions/question';
+import { Answer } from './answer';
 
 @Component({
   selector: 'app-answers',
@@ -13,23 +13,20 @@ export class AnswersComponent implements OnInit {
   @Input() answerIsEdit: boolean;  // is true when editing an answer or adding a new one
   @Input() answerId: string;       // is 'new' to add a new question, or a number when editing one
 
-  // todo: implement getting the answer data and display one or more answers
   answers: Answer[] = [];
-  // answers: Answer[] = [
-  //   new Answer('test1', 'desc', ''),
-  //   new Answer('test2', 'desc', '')
-  // ];
-
-  constructor() { }
 
   ngOnInit() {
-    // todo: removing these debugging lines
-    // console.log('selectedQuestion is ' + this.selectedQuestion);
-    // console.log('answerIsEdit is ' + this.answerIsEdit);
-    // console.log('answerId is ' + this.answerId);
+    if (this.selectedQuestion) {
+      this.answers = this.selectedQuestion.answers;
+    }
+    // todo: add question subscription
   }
 
   thereAreAnswers(): boolean {
-    return (this.answers && this.answers.length > 0);
+    return (this.selectedQuestion && this.selectedQuestion.answers && this.selectedQuestion.answers.length > 0);
+  }
+
+  thereIsOneAnswer(): boolean {
+    return (this.selectedQuestion && this.selectedQuestion.answers && this.selectedQuestion.answers.length === 1);
   }
 }
