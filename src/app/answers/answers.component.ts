@@ -1,7 +1,9 @@
-import {Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 
 import { Question } from '../questions/question';
 import { Answer } from './answer';
+import { QuestionService } from "../questions/question.service";
 
 @Component({
   selector: 'app-answers',
@@ -13,13 +15,28 @@ export class AnswersComponent implements OnInit {
   @Input() answerIsEdit: boolean;  // is true when editing an answer or adding a new one
   @Input() answerId: string;       // is 'new' to add a new question, or a number when editing one
 
+  private subscription: Subscription;
+  questions: Question[] = [];
   answers: Answer[] = [];
+
+  constructor(private questionService: QuestionService) {}
 
   ngOnInit() {
     if (this.selectedQuestion) {
       this.answers = this.selectedQuestion.answers;
     }
-    // todo: add question subscription
+    // todo: remove this
+    console.log(this.answers);
+
+    this.questions = this.questionService.getQuestions();
+    this.subscription = this.questionService.questionsChanged.subscribe(
+      (questions: Question[]) => {
+        this.questions = questions
+        this.answers = this.questions[this.questionId].answers;
+        // todo: remove this
+        console.log("updated answers to " + this.answers);
+      }
+    )
   }
 
   thereAreAnswers(): boolean {
