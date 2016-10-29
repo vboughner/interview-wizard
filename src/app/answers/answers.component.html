@@ -8,6 +8,6 @@
   <div *ngIf="thereAreAnswers()">
     <h3 *ngIf="thereIsOneAnswer()">Answer</h3>
     <h3 *ngIf="!thereIsOneAnswer()">Answers</h3>
-    <app-answer-area *ngFor="let answer of answers; let i = index" [answer]="answer" [answerId]="i"></app-answer-area>
+    <app-answer-area *ngFor="let answer of selectedQuestion.answers; let i = index" [answer]="answer" [answerId]="i"></app-answer-area>
   </div>
 </div>

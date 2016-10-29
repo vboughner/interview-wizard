@@ -1,16 +1,17 @@
 <div class="row">
-  <div class="col-sm-12" style="background-color: darkorchid">
-    <h3>{{answer.name}}</h3>
+  <div class="col-sm-12">
+    <h4>{{answer.name}}</h4>
   </div>
 </div>
 <div class="row">
-  <div class="col-sm-8" style="background-color: darkgoldenrod">
-    <p>{{answer.description}}</p>
-  </div>
-  <div class="col-sm-4" style="background-color: darkolivegreen">
-    <p>answer image</p>
-    <p>answer image</p>
-    <p>answer image</p>
-    <p>answer image</p>
+  <div class="col-sm-12">
+    <div class="pull-right" style="margin-left: 20px; margin-bottom: 15px">
+      <img class="img-responsive"
+           src="{{answer.imagePath}}"
+           style="max-height: 150px;"/>
+    </div>
+    <p [innerHTML]="answerFormattedDescription"></p>
+    <button class="btn btn-success" *ngIf="isSignedIn()" [routerLink]="['edit']">Edit Answer</button>
+    <button class="btn btn-danger" *ngIf="isSignedIn()" (click)="onDelete()">Delete Answer</button>
   </div>
 </div>
