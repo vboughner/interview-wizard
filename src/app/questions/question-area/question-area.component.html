@@ -28,8 +28,10 @@
            style="max-height: 150px;"/>
     </div>
     <p [innerHTML]="selectedQuestionFormattedDescription"></p>
-    <button class="btn btn-success" *ngIf="isSignedIn()" [routerLink]="['edit']">Edit Question</button>
-    <button class="btn btn-danger" *ngIf="isSignedIn()" (click)="onDelete()">Delete Question</button>
+    <div class="text-right">
+      <button class="btn btn-success" *ngIf="isSignedIn()" [routerLink]="['edit']">Edit Question</button>
+      <button class="btn btn-danger" *ngIf="isSignedIn()" (click)="onDelete()">Delete Question</button>
+    </div>
   </div>
 </div>
 <app-answers [selectedQuestion]="selectedQuestion" [questionId]="questionId" [answerIsEdit]="answerIsEdit"
