@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Input } from '@angular/core/src/metadata/directives';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import { Answer } from '../answer';
 import { AuthService } from '../../auth/auth.service';
@@ -17,18 +18,30 @@ export class AnswerAreaComponent implements OnInit {
 
   answerFormattedDescription: string = '';
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private router: Router, private route: ActivatedRoute) {}
 
   ngOnInit() {
     if (this.answer) {
       this.answerFormattedDescription = this.answer.description.replace(/\r?\n/g, "<br />");
     }
     else {
-      this.answerFormattedDescription = "cannot format description yet";
+      this.answerFormattedDescription = "Error: cannot format description yet";
     }
   }
 
   isSignedIn(): boolean {
     return this.authService.isAuthenticated();
+  }
+
+  onEditAnswer(): void {
+    this.router.navigate(['answers', this.answerId], {relativeTo: this.route});
+  }
+
+  onNewAnswer(): void {
+    this.router.navigate(['answers/new'], {relativeTo: this.route});
+  }
+
+  onDeleteAnswer(): void {
+    alert("delete answer");
   }
 }

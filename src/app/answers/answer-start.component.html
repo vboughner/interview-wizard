@@ -11,9 +11,8 @@
       You are signed in and may answer this question.
       </span>
     </p>
-    <div>
-      <a class="btn btn-success" *ngIf="isSignedIn()" [routerLink]="['answers/new']">Answer the Question</a>
-      <a class="btn btn-success" *ngIf="isSignedIn()" [routerLink]="['answers/0/edit']">Edit First Answer (test)</a>
+    <div class="text-right">
+      <a class="btn btn-success" *ngIf="isSignedIn()" [routerLink]="['answers/new']">New Answer</a>
     </div>
   </div>
 </div>
