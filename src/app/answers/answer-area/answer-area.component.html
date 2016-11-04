@@ -28,10 +28,12 @@
            style="max-height: 150px;"/>
     </div>
     <p [innerHTML]="answerFormattedDescription"></p>
-    <div class="text-right">
-      <button class="btn btn-success" *ngIf="isSignedIn()" (click)="onEditAnswer()">Edit Answer</button>
-      <button class="btn btn-success" *ngIf="isSignedIn()" (click)="onNewAnswer()">New Answer</button>
-      <button class="btn btn-danger" *ngIf="isSignedIn()" (click)="onDeleteAnswer()">Delete Answer</button>
-    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-12 text-right">
+    <button class="btn btn-success" *ngIf="isSignedIn()" (click)="onEditAnswer()">Edit Answer</button>
+    <button class="btn btn-success" *ngIf="isSignedIn()" (click)="onNewAnswer()">New Answer</button>
+    <button class="btn btn-danger" *ngIf="isSignedIn()" (click)="onDeleteAnswer()">Delete Answer</button>
   </div>
 </div>

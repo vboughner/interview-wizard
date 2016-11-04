@@ -43,7 +43,7 @@ export class QuestionEditComponent implements OnInit {
   }
 
   onSubmit(value: Question) {
-    const submittedQuestion = new Question(value.name, value.description, value.imagePath, null);
+    const submittedQuestion = new Question(value.name, value.description, value.imagePath, this.selectedQuestion.answers);
     if (this.isAdd) {
       const index = this.questionService.addQuestion(submittedQuestion);
       this.router.navigate(['/questions', index]);
