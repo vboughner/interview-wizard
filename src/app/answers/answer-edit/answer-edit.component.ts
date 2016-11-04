@@ -19,13 +19,14 @@ export class AnswerEditComponent implements OnInit {
   @Input() questionId: number;
   @Input() answerId: string;  // is 'new' for a new question
 
-  selectedAnswer: Answer = new Answer('test1', 'desc', '');
+  selectedAnswer: Answer;
   isAdd: boolean = false;
 
   constructor(private questionService: QuestionService, private router: Router) { }
 
   ngOnInit() {
     this.isAdd = (this.answerId === "new");
+    this.selectedAnswer = this.selectedQuestion.answers[this.answerId];
   }
 
   onSubmit(value: Answer) {

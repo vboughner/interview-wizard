@@ -12,7 +12,7 @@
               id="answer-name"
               required
               class="form-control"
-              [ngModel]="selectedAnswer.name"
+              [ngModel]="selectedAnswer?.name"
               name="name">
           </div>
         </div>
@@ -24,8 +24,8 @@
               rows="5"
               id="answer-description"
               class="form-control"
-              [ngModel]="selectedAnswer.description"
-              name="description">{{selectedAnswer.description}}</textarea>
+              [ngModel]="selectedAnswer?.description"
+              name="description">{{selectedAnswer?.description}}</textarea>
           </div>
         </div>
 
@@ -34,10 +34,10 @@
             <label for="answer-image-path">Image URL</label>
             <input
               type="text"
-              value="{{selectedAnswer.imagePath}}"
+              value="{{selectedAnswer?.imagePath}}"
               id="answer-image-path"
               class="form-control"
-              [ngModel]="selectedAnswer.imagePath"
+              [ngModel]="selectedAnswer?.imagePath"
               name="imagePath"
               #imagePath="ngModel"
               pattern="(ftp|http|https):\/\/[^ ]+">
