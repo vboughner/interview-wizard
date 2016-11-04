@@ -103,4 +103,16 @@ export class QuestionService {
     this.saveQuestions();
     return retval;
   }
+
+  // call when you need to delete an answer, it will remove the answer
+  // from the array by splicing it out, caller should not rely on old
+  // copies, references, or indexes of the deleted answer (or any other
+  // answers) after this deletion
+  deleteAnswer(question: Question, answerIndexToBeDeleted: number): void {
+    if (question && question.answers &&
+            answerIndexToBeDeleted >= 0 && answerIndexToBeDeleted < question.answers.length) {
+      question.answers.splice(answerIndexToBeDeleted, 1);
+      this.saveQuestions();
+    }
+  }
 }

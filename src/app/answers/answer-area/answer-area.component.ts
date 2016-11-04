@@ -4,6 +4,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 import { Answer } from '../answer';
 import { AuthService } from '../../auth/auth.service';
+import { Question } from '../../questions/question';
+import { QuestionService } from '../../questions/question.service';
 
 /*
  * Area for displaying answers.
@@ -13,12 +15,19 @@ import { AuthService } from '../../auth/auth.service';
   templateUrl: './answer-area.component.html'
 })
 export class AnswerAreaComponent implements OnInit {
+  private isConfirmDeleteVisible: boolean = false;
+  private confirmDeleteMsg;
+
+  @Input() question: Question;
   @Input() answer: Answer;
   @Input() answerId: number;
 
   answerFormattedDescription: string = '';
 
-  constructor(private authService: AuthService, private router: Router, private route: ActivatedRoute) {}
+  constructor(private authService: AuthService,
+              private router: Router,
+              private route: ActivatedRoute,
+              private questionService: QuestionService) {}
 
   ngOnInit() {
     if (this.answer) {
@@ -42,6 +51,18 @@ export class AnswerAreaComponent implements OnInit {
   }
 
   onDeleteAnswer(): void {
-    alert("delete answer");
+    this.confirmDeleteMsg = 'Are you sure you wish to delete the answer "' +
+    this.answer.name + '"';
+    this.isConfirmDeleteVisible = true;
+  }
+
+  confirmDelete() {
+    this.isConfirmDeleteVisible = false;
+    this.questionService.deleteAnswer(this.question, this.answerId);
+    // we don't need to navigate after delete, because page automatically updates
+  }
+
+  cancelDelete() {
+    this.isConfirmDeleteVisible = false;
   }
 }
