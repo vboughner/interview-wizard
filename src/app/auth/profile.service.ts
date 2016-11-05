@@ -69,17 +69,48 @@ export class ProfileService {
     return (p && p.isAdmin);
   }
 
+
   // todo: note that current user must be an admin to call any of the methods below
 
-  editProfile(email: string, updated: Profile): void {
-    // todo: implement to replace an existing profile record with a new one (to change email address and/or name)
+  // replace an existing profile record with a new one (to change email address and/or name)
+  editProfile(email: string, update: Profile): void {
+    var p: Profile = this.getProfile(email);
+    if (p) {
+      var index = this.profiles.indexOf(p);
+      this.profiles[index] = update;
+      this.saveProfiles();
+      // todo: remove
+      console.log("Saved profile change for email = " + email);
+    }
+    else {
+      console.log("Error: could not find a profile for email = " + email + ", so profile not added");
+    }
   }
 
+  // remove a profile
   deleteProfile(email:string): void {
-    // todo: implement to remove a profile
+    var p: Profile = this.getProfile(email);
+    if (p) {
+      var index = this.profiles.indexOf(p);
+      this.profiles.splice(index, 1);
+      this.saveProfiles();
+      console.log("Removed profile for email = " + email);
+    }
+    else {
+      console.log("Error: could not remove profile for email = " + email + ", ignoring.");
+    }
   }
 
-  addProfile(name: string, email: string): void {
-    // todo: implement to add a profile
+  // add a new profile
+  addProfile(add: Profile): void {
+    var p: Profile = this.getProfile(add.email);
+    if (p) {
+      console.log("Error: could not add profile for email = " + add.email + ", because it already exists.");
+    }
+    else {
+      this.profiles.push(add);
+      this.saveProfiles();
+      console.log("Added profile for email = " + add.email);
+    }
   }
 }

@@ -53,4 +53,10 @@ export class AuthService {
     var user = firebase.auth().currentUser;
     return (user && this.profileService.isAdmin(user.email));
   }
+
+  // returns this user
+  getUser(): User {
+    var user = firebase.auth().currentUser;
+    return user;
+  }
 }

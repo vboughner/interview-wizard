@@ -5,8 +5,12 @@
  * here in the Profile, we link to the user by using the same unique email address, but we provide a richer set
  * of data about the user.
  */
-export interface Profile {
-  email: string;           // unique identifier, same as the one in the User object for authentication
-  displayName: string;     // how the user name will be shown
-  isAdmin: boolean;        // true if user has permission to administrate
+export class Profile {
+  constructor(
+    public email: string,           // unique identifier, same as the one in the User object for authentication
+    public displayName: string,     // how the user name will be shown
+    public isAdmin: boolean,        // true if user has permission to administrate
+    public photoUrl: string,        // where is this user's profile image stored
+    public webSiteUrl: string       // where is this user on the web
+  ) {}
 }
