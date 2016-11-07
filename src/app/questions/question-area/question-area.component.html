@@ -23,7 +23,7 @@
 </div>
 <div class="row">
   <div class="col-sm-12">
-    <div class="pull-right" style="margin-left: 20px; margin-bottom: 15px">
+    <div *ngIf="hasImage()" class="pull-right" style="margin-left: 20px; margin-bottom: 15px">
       <img class="img-responsive"
            src="{{selectedQuestion?.imagePath}}"
            style="max-height: 150px;"/>

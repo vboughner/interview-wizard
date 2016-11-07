@@ -74,6 +74,12 @@ export class QuestionAreaComponent implements OnInit, OnDestroy {
     return this.authService.isAuthenticated();
   }
 
+  hasImage(): boolean {
+    return (this.selectedQuestion !== undefined &&
+            this.selectedQuestion.imagePath !== undefined &&
+            this.selectedQuestion.imagePath.length > 0);
+  }
+
   onDelete() {
     this.confirmDeleteMsg = 'Are you sure you wish to delete the question "' +
     this.selectedQuestion.name + '"';

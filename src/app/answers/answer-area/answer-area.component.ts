@@ -42,6 +42,12 @@ export class AnswerAreaComponent implements OnInit {
     return this.authService.isAuthenticated();
   }
 
+  hasImage(): boolean {
+    return (this.answer !== undefined &&
+            this.answer.imagePath !== undefined &&
+            this.answer.imagePath.length > 0);
+  }
+
   onEditAnswer(): void {
     this.router.navigate(['answers', this.answerId], {relativeTo: this.route});
   }
