@@ -34,4 +34,8 @@ export class ProfileComponent implements OnInit {
       this.profile = new Profile(this.user.email, '', false, '', '');
     }
   }
+
+  isSignedIn(): boolean {
+    return this.authService.isAuthenticated();
+  }
 }

@@ -1,6 +1,30 @@
-<p>profile works!</p>
-<p>email is: {{user.email}}</p>
-<p>displayName is {{profile.displayName}}</p>
-<p>isAdmin is {{profile.isAdmin}}</p>
-<p>webSiteUrl is {{profile.webSiteUrl}}</p>
-<p>photoUrl is {{profile.photoUrl}}</p>
+<div class="panel panel-default" *ngIf="isSignedIn()">
+  <div class="panel-heading">
+    <h3 class="pane-title">
+      <span *ngIf="profile.displayName && profile.displayName.length > 0">{{profile.displayName}}</span>
+      <span *ngIf="!profile.displayName || profile.displayName.length === 0">{{user.email}}</span>
+      <span *ngIf="profile.isAdmin" class="label label-default">Administrator</span>
+    </h3>
+  </div>
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-sm-4">
+        <img class="img-thumbnail" src="{{profile.photoUrl}}">
+      </div>
+      <div class="col-sm-8">
+        <ul class="list-group">
+          <li class="list-group-item"><strong>Name: </strong>{{profile.displayName}}</li>
+          <li class="list-group-item"><strong>Email: </strong>{{user.email}}</li>
+          <li class="list-group-item"><strong>Website: </strong>{{profile.websiteUrl}}</li>
+          <li class="list-group-item"><strong>Photo: </strong>{{profile.photoUrl}}</li>
+          <li class="list-group-item"><strong>Admin: </strong>{{profile.isAdmin}}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="panel panel-default" *ngIf="!isSignedIn()">
+  <div class="panel-heading">
+    <h3 class="panel-title">Not Signed In</h3>
+  </div>
+</div>
