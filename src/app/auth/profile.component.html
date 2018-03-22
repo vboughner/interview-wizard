@@ -21,6 +21,12 @@
         </ul>
       </div>
     </div>
+    <div class="row">
+      <div class="col-sm-12 text-right">
+        <!-- todo: add check later that this is our own profile -->
+        <button class="btn btn-success" *ngIf="isSignedIn()" [routerLink]="['edit']">Edit Profile</button>
+      </div>
+    </div>
   </div>
 </div>
 <div class="panel panel-default" *ngIf="!isSignedIn()">

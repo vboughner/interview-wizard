@@ -6,6 +6,7 @@ import { QUESTIONS_ROUTES } from './questions/questions.routes';
 import { SignupComponent } from './auth/signup.component';
 import { SigninComponent } from './auth/signin.component';
 import { ProfileComponent } from './auth/profile.component';
+import { ProfileEditComponent } from './auth/profile-edit.component';
 
 /*
  * Top-level routes for URLs in the application.
@@ -16,6 +17,7 @@ const APP_ROUTES: Routes = [
   { path: 'signup', component: SignupComponent },
   { path: 'signin', component: SigninComponent },
   { path: 'profile', component: ProfileComponent },
+  { path: 'profile/edit', component: ProfileEditComponent },
   { path: '**', redirectTo: 'questions' }
 ];
 

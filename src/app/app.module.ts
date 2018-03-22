@@ -26,6 +26,7 @@ import { AnswersComponent } from './answers/answers.component';
 import { AnswerStartComponent } from './answers/answer-start.component';
 import { AnswerEditComponent } from './answers/answer-edit/answer-edit.component';
 import { ProfileComponent } from './auth/profile.component';
+import { ProfileEditComponent } from './auth/profile-edit.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { ProfileComponent } from './auth/profile.component';
     AnswersComponent,
     AnswerStartComponent,
     AnswerEditComponent,
-    ProfileComponent
+    ProfileComponent,
+    ProfileEditComponent
   ],
   imports: [
     BrowserModule,

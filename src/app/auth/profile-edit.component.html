@@ -1,0 +1,44 @@
+<div>
+  <div class="row">
+    <div class="col-sm-12">
+      <h3>Edit Profile</h3>
+      <form id="profile-edit" (ngSubmit)="onSubmit(f.value)" #f="ngForm">
+        <div class="row">
+          <div class="col-sm-12 form-group">
+            <label for="displayName">Name</label>
+            <input
+              type="text"
+              id="displayName"
+              required
+              class="form-control"
+              [ngModel]="profile.displayName"
+              name="displayName">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-12 form-group">
+            <label for="photoUrl">Photo</label>
+            <input
+              type="text"
+              value="{{profile.photoUrl}}"
+              id="photoUrl"
+              class="form-control"
+              [ngModel]="profile.photoUrl"
+              name="photoURl"
+              #imagePath="ngModel"
+              pattern="(ftp|http|https):\/\/[^ ]+">
+            <span class="help-block" *ngIf="!photoUrl.valid">Please enter a correct and complete URL for the photo</span>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-12 text-right">
+            <button class="btn btn-success" type="submit" [disabled]="!f.valid">Save</button>
+          </div>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>
